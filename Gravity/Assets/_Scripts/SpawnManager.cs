@@ -68,7 +68,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (collision.tag == "Satellite")
         {
-            player.AddScore(2*-player.ScoreForSatellite);
+            player.AddScore(2*-player.GetScoreForSatellite);
             Destroy(collision.gameObject);
         }
         else if(collision.tag == "Asteroid")

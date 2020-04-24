@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Text scoreText = null;
     [SerializeField] int scoreForSatellite = 0;
-    public int ScoreForSatellite { get { return scoreForSatellite; } }
+    public int GetScoreForSatellite { get { return scoreForSatellite; } }
     [SerializeField] int scoreForAsteroid = 0;
     int score = 0;
 

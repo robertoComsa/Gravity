@@ -14,6 +14,7 @@ public class SpaceObject : MonoBehaviour
 
     float speed = 0f;
     Vector3 destination = Vector3.zero;
+    Vector3 initialDestination = Vector3.zero;
     Vector3 newDestination = Vector3.zero;
 
     // --------------------------------------------------------------- Metode ------------------------------------------------------- //
@@ -21,7 +22,8 @@ public class SpaceObject : MonoBehaviour
     private void Awake()
     {
        speed = UnityEngine.Random.Range(minSpeed, maxSpeed);
-       destination = blackHole.transform.position;
+       initialDestination = blackHole.transform.position; ;
+       destination = initialDestination;
        newDestination = transform.position; // Locul in care obiectul s-a instantiat 
     }
 
@@ -43,6 +45,11 @@ public class SpaceObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (tag == "Satellite" && collision.tag == "Player") destination = newDestination;
+        if (tag == "Satellite" && collision.tag == "Player" && destination != newDestination)
+            if (Vector3.Distance(collision.gameObject.transform.position, initialDestination) < Vector3.Distance(transform.position, initialDestination))
+            {
+                destination = newDestination;
+                collision.GetComponent<PlayerController>().AddScore(collision.GetComponent<PlayerController>().GetScoreForSatellite);
+            }
     }
 }
