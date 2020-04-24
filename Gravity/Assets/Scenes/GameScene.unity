@@ -916,7 +916,7 @@ PrefabInstance:
     - target: {fileID: 8716152094426822072, guid: aa5f3f7f0b1a90e479af801e85486a83,
         type: 3}
       propertyPath: spawnWait
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8716152094426822074, guid: aa5f3f7f0b1a90e479af801e85486a83,
         type: 3}

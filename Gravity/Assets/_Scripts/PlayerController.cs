@@ -78,12 +78,7 @@ public class PlayerController : MonoBehaviour
             AddScore(-scoreForAsteroid);
             Destroy(collision.gameObject);
         }
-        else if(collision.tag == "Satellite")
-        {
-            AddScore(scoreForSatellite);
-            // Momentan destroy , in viitor vrem sa inpingem inapoi asteroidul / sau alta mecanica /animatie care sa arate ca salvam asteroidul 
-            Destroy(collision.gameObject);
-        }
+        else if(collision.tag == "Satellite") AddScore(scoreForSatellite);
     }
 
 

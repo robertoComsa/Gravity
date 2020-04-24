@@ -13,16 +13,36 @@ public class SpaceObject : MonoBehaviour
     // ------------------------------------------------------------ Variabile ---------------------------------------------------- //
 
     float speed = 0f;
+    Vector3 destination = Vector3.zero;
+    Vector3 newDestination = Vector3.zero;
 
     // --------------------------------------------------------------- Metode ------------------------------------------------------- //
 
     private void Awake()
     {
        speed = UnityEngine.Random.Range(minSpeed, maxSpeed);
+       destination = blackHole.transform.position;
+       newDestination = transform.position; // Locul in care obiectul s-a instantiat 
     }
 
     void Update()
     {
-        this.transform.position = Vector3.MoveTowards(this.transform.position, blackHole.transform.position, speed * Time.deltaTime);
+        MoveObject(destination);
+        ClearSatelliteFromScene();
+    }
+
+    private void MoveObject(Vector3 desiredPosition)
+    {
+        this.transform.position = Vector3.MoveTowards(this.transform.position, desiredPosition, speed * Time.deltaTime);
+    }
+
+    void ClearSatelliteFromScene()
+    {
+        if (transform.position == newDestination) Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (tag == "Satellite" && collision.tag == "Player") destination = newDestination;
     }
 }
