@@ -320,8 +320,9 @@ MonoBehaviour:
   playerSpeed: 6
   health: {fileID: 221656726}
   scoreText: {fileID: 1743879537}
-  scoreForSatellite: 10
+  scoreForSatellite: 5
   scoreForAsteroid: 15
+  score: 0
 --- !u!114 &221656725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,7 +917,7 @@ PrefabInstance:
     - target: {fileID: 8716152094426822072, guid: aa5f3f7f0b1a90e479af801e85486a83,
         type: 3}
       propertyPath: spawnWait
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8716152094426822074, guid: aa5f3f7f0b1a90e479af801e85486a83,
         type: 3}

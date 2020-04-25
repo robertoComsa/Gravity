@@ -17,11 +17,12 @@ public class SpaceObject : MonoBehaviour
     Vector3 initialDestination = Vector3.zero;
     Vector3 newDestination = Vector3.zero;
 
-    // --------------------------------------------------------------- Metode ------------------------------------------------------- //
+    // ------------------------------------------------------- Metode Sistem --------------------------------------------------------------- //
 
     private void Awake()
     {
        speed = UnityEngine.Random.Range(minSpeed, maxSpeed);
+
        initialDestination = blackHole.transform.position; ;
        destination = initialDestination;
        newDestination = transform.position; // Locul in care obiectul s-a instantiat 
@@ -32,6 +33,8 @@ public class SpaceObject : MonoBehaviour
         MoveObject(destination);
         ClearSatelliteFromScene();
     }
+
+    // -------------------------------------------------------------- Metode --------------------------------------------------------------- //
 
     private void MoveObject(Vector3 desiredPosition)
     {

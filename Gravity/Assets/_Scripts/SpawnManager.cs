@@ -8,7 +8,7 @@ public class SpawnManager : MonoBehaviour
 
     [SerializeField] GameObject asteroid = null;
     [SerializeField] GameObject satellite = null; 
-    [SerializeField]  PlayerController player = null;
+    [SerializeField] PlayerController player = null;
     [SerializeField] float spawnWait = 0f;
 
     // ------------------------------------------------------------- Metode --------------------------------------------------------- //
@@ -16,6 +16,15 @@ public class SpawnManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnSpaceObjects());
+        StartCoroutine(DecreaseSpawnWait());
+    }
+
+    IEnumerator DecreaseSpawnWait()
+    {
+        DecreaseSpawnWait();
+        yield return new WaitForSeconds(10);
+        if (spawnWait > 0.5) spawnWait -= 0.1f;   //  Debug.Log(spawnWait);
+        StartCoroutine(DecreaseSpawnWait());
     }
 
     IEnumerator SpawnSpaceObjects()
