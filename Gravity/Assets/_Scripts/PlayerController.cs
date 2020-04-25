@@ -79,7 +79,8 @@ public class PlayerController : MonoBehaviour
             AddScore(-scoreForAsteroid);
             Destroy(collision.gameObject);
         }
-        else if(collision.tag == "Satellite") AddScore(scoreForSatellite);
+        else if(collision.tag == "Satellite" && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
+            AddScore(scoreForSatellite);
     }
 
 
