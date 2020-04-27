@@ -24,7 +24,7 @@ public class SpawnManager : MonoBehaviour
     {
         DecreaseSpawnWait();
         yield return new WaitForSeconds(10);
-        if (spawnWait > 0.5) spawnWait -= 0.1f;   //  Debug.Log(spawnWait);
+        if (spawnWait > 0.4) spawnWait -= 0.1f;   //  Debug.Log(spawnWait);
         StartCoroutine(DecreaseSpawnWait());
     }
 

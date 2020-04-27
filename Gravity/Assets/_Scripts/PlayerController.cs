@@ -38,12 +38,12 @@ public class PlayerController : MonoBehaviour
 
     private void ManageMovement()
     {
-        if (Input.GetKey("a")) horizontal = -1;
-        else if (Input.GetKey("d")) horizontal = 1;
+        if (Input.GetKey(KeyCode.LeftArrow)) horizontal = -1;
+        else if (Input.GetKey(KeyCode.RightArrow)) horizontal = 1;
         else horizontal = 0;
 
-        if (Input.GetKey("w")) vertical = 1;
-        else if (Input.GetKey("s")) vertical = -1;
+        if (Input.GetKey(KeyCode.UpArrow)) vertical = 1;
+        else if (Input.GetKey(KeyCode.DownArrow)) vertical = -1;
         else vertical = 0;
 
         Vector2 moveInput = new Vector2(horizontal, vertical);
