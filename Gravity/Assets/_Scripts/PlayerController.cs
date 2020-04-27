@@ -73,13 +73,18 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "BH") health.Die();
+        else if (collision.tag == "Heart")
+        {
+            health.GetHealed();
+            Destroy(collision.gameObject);
+        }
         else if (collision.tag == "Asteroid")
         {
             health.TakeDamage();
             AddScore(-scoreForAsteroid);
             Destroy(collision.gameObject);
         }
-        else if(collision.tag == "Satellite" && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
+        else if (collision.tag == "Satellite" && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
             AddScore(scoreForSatellite);
     }
 

@@ -14,3 +14,7 @@ Phase 1.1:
 -> Added recoil on satelites ( player saves satelites by pushing them away from BlackHole's event horizon ) 
 -> Added increased difficulty over time by decreasing spawnWait time for space objects .
 -> Fixed score exploit on collisions with already saved satellites .
+
+Phase 1.2:
+
+-> Added healing factor through collectible hearts 

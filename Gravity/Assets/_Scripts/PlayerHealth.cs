@@ -29,6 +29,15 @@ public class PlayerHealth : MonoBehaviour
         hearts[playerHealth].SetActive(false);
     }
 
+    public void GetHealed()
+    {
+        if (playerHealth < 3)
+        {
+            hearts[playerHealth].SetActive(true);
+            playerHealth += 1; 
+        }
+    }
+
     public void Die()
     { 
         Destroy(this.gameObject);

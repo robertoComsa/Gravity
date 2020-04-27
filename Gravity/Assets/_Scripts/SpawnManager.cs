@@ -7,7 +7,8 @@ public class SpawnManager : MonoBehaviour
     // ------------------------------------------------ Variabile - vizibile in editor ---------------------------------------------- //
 
     [SerializeField] GameObject asteroid = null;
-    [SerializeField] GameObject satellite = null; 
+    [SerializeField] GameObject satellite = null;
+    [SerializeField] GameObject heart = null;
     [SerializeField] PlayerController player = null;
     [SerializeField] float spawnWait = 0f;
 
@@ -47,40 +48,36 @@ public class SpawnManager : MonoBehaviour
         switch(rnd_zone)
         {
             case 1:
-                if (rnd_object < 0)
-                    Instantiate(asteroid, spawnZone1, Quaternion.identity);
-                else if (rnd_object > 0)
-                    Instantiate(satellite, spawnZone1, Quaternion.identity);
+                ChooseAndSpawnObj(rnd_object,spawnZone1);
                 break;
             case 2:
-                if (rnd_object < 0)
-                    Instantiate(asteroid, spawnZone2, Quaternion.identity);
-                else if (rnd_object > 0)
-                    Instantiate(satellite, spawnZone3, Quaternion.identity);
+                ChooseAndSpawnObj(rnd_object, spawnZone2);
                 break;
             case 3:
-                if (rnd_object < 0)
-                    Instantiate(asteroid, spawnZone3, Quaternion.identity);
-                else if (rnd_object > 0)
-                    Instantiate(satellite, spawnZone3, Quaternion.identity);
+                ChooseAndSpawnObj(rnd_object, spawnZone3);
                 break;
             case 4:
-                if (rnd_object < 0)
-                    Instantiate(asteroid, spawnZone4, Quaternion.identity);
-                else if (rnd_object > 0)
-                    Instantiate(satellite, spawnZone4, Quaternion.identity);
+                ChooseAndSpawnObj(rnd_object, spawnZone4);
                 break;
         }
+    }
+
+    private void ChooseAndSpawnObj(float rnd_obj , Vector2 position)
+    {
+        float rnd2 = Random.Range(-1f, 0.21f);
+        if (rnd_obj < 0 && rnd2 < 0) Instantiate(asteroid, position, Quaternion.identity);
+        else if (rnd_obj > 0 && rnd2 < 0) Instantiate(satellite, position, Quaternion.identity);
+        else if (rnd2 > 0) Instantiate(heart, position, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Satellite")
         {
-            player.AddScore(2*-player.GetScoreForSatellite);
+            player.AddScore(2 * -player.GetScoreForSatellite);
             Destroy(collision.gameObject);
         }
-        else if(collision.tag == "Asteroid")
+        else if (collision.tag == "Asteroid" || collision.tag =="Heart")
         {
             Destroy(collision.gameObject);
         }

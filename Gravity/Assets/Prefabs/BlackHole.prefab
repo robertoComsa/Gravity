@@ -224,5 +224,6 @@ MonoBehaviour:
     type: 3}
   satellite: {fileID: 1983422781711487799, guid: 301f053551b4625478e571fb593d9fd4,
     type: 3}
-  spawnWait: 1
-  player: {fileID: 0}
+  heart: {fileID: 6842925179577282338, guid: 817f480b58cf2fd4a9527a8fd5947e59, type: 3}
+  player: {fileID: 6684037487844305221, guid: c81e31bed3ab32e42b227d231544d183, type: 3}
+  spawnWait: 1.5
