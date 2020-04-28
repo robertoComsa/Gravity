@@ -18,3 +18,6 @@ Phase 1.1:
 Phase 1.2:
 
 -> Added healing factor through collectible hearts 
+-> Added MainMenu and AfterDeathMenu 
+-> Cursor is locked and invisible while playing , but changes for after death menu
+-> The score is not modified if the player is dead

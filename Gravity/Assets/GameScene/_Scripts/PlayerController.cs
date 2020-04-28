@@ -24,6 +24,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     void Update()
     {
         ManageMovement();
@@ -66,8 +72,11 @@ public class PlayerController : MonoBehaviour
 
     public void AddScore(int scoreToAdd)
     {
-        score += scoreToAdd;
-        scoreText.text = "Score : " + score.ToString();
+        if (health.IsAlive())
+        {
+            score += scoreToAdd;
+            scoreText.text = "Score : " + score.ToString();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

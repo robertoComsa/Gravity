@@ -6,16 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // Variabile
+    //  -------------------------------------------------------------- Variabile ------------------------------------------------------- //
 
     int playerHealth = 0;
+    bool isAlive = true;
+    public bool IsAlive(){ return isAlive; } 
+
+    // ------------------------------------------------------ Variabile vizibile in editor -------------------------------------------//
+
     [SerializeField] GameObject[] hearts = null;
+    [SerializeField] GameObject afterDeathMenu = null;
 
     // --------------------------------------------------------------- Metode -------------------------------------------------------- //
 
     private void Awake()
     {
         playerHealth = hearts.Length;
+    }
+
+    private void Start()
+    {
+        isAlive = true;
     }
 
     private void Update()
@@ -39,9 +50,11 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void Die()
-    { 
+    {
+        isAlive = false;
         Destroy(this.gameObject);
-        // + Restart button enabled care va apela metoda de mai jos
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        afterDeathMenu.gameObject.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }
