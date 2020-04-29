@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         ManageMovement();
+        ManageBestScore();
     }
 
     private void FixedUpdate()
@@ -69,6 +70,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int scoreForAsteroid = 0;
     [SerializeField] int score = 0;
     public int GetScore { get { return score; } }
+
+    public void ManageBestScore()
+    {
+        if(score > PlayerPrefs.GetInt("HighScore",0))
+        {
+            PlayerPrefs.SetInt("HighScore", score);
+        }
+    }
 
     public void AddScore(int scoreToAdd)
     {

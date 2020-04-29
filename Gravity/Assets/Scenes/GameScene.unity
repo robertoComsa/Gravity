@@ -867,6 +867,11 @@ PrefabInstance:
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 1743879537}
+    - target: {fileID: 6684037487844305221, guid: c81e31bed3ab32e42b227d231544d183,
+        type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6684037487844305223, guid: c81e31bed3ab32e42b227d231544d183,
         type: 3}
       propertyPath: hearts.Array.data[0]

@@ -132,6 +132,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  afterDeathMenu: {fileID: 0}
 --- !u!1 &6684037489883353777
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ TagManager:
   - Asteroid
   - Satellite
   - Heart
+  - MainMenu
   layers:
   - Default
   - TransparentFX
