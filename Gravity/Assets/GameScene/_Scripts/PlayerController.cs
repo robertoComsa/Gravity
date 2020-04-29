@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVelocity;
     int vertical = 0;
     int horizontal = 0;
+    bool isPaused = false;
 
     // --------------------------------------------------------------- Metode sistem ------------------------------------------------------------------- //
 
@@ -45,12 +46,21 @@ public class PlayerController : MonoBehaviour
 
     private void ManagePauseMenu()
     {
-        if(Input.GetKey(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = 0f;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            pauseMenu.SetActive(true);
+            if (!isPaused)
+            {
+                isPaused = true;
+                Time.timeScale = 0f;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                pauseMenu.SetActive(true);
+            }
+            else if(isPaused)
+            {
+                isPaused = false;
+                pauseMenu.GetComponent<MainMenu>().ResumeGame();
+            }
         }
     }
 
