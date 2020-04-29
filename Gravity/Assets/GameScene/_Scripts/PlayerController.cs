@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float playerSpeed = 0f;
     [SerializeField] private PlayerHealth health = null;
+    [SerializeField] private GameObject pauseMenu = null;
 
     // ----------------------------------------------------------------- Variabile ---------------------------------------------------------------------- //
 
@@ -34,11 +35,23 @@ public class PlayerController : MonoBehaviour
     {
         ManageMovement();
         ManageBestScore();
+        ManagePauseMenu();
     }
 
     private void FixedUpdate()
     {
         ApplyMovement();
+    }
+
+    private void ManagePauseMenu()
+    {
+        if(Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            pauseMenu.SetActive(true);
+        }
     }
 
     // ------------------------------------------------------------------ Miscare  ------------------------------------------------------------------------- // 
@@ -108,4 +121,5 @@ public class PlayerController : MonoBehaviour
 
 
     // ------------------------------------------------------------------ ABILITATI ------------------------------------------------------------------------ //
+    
 }

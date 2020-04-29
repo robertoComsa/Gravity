@@ -38,14 +38,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 
-    /*
     public void ResumeGame()
     {
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        gameObject.SetActive(false);
     }
-    */
 
     public void QuitGame()
     {
