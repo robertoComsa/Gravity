@@ -127,8 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blackHole: {fileID: 8716152094426822075, guid: aa5f3f7f0b1a90e479af801e85486a83,
     type: 3}
-  minSpeed: 1.5
-  maxSpeed: 3.6
+  minSpeed: 2
+  maxSpeed: 4.1
 --- !u!50 &7968459196521351106
 Rigidbody2D:
   serializedVersion: 4

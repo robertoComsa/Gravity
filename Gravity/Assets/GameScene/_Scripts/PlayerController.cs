@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
         ManageMovement();
         ManageBestScore();
         ManagePauseMenu();
+        ApplyAbilities();
     }
 
     private void FixedUpdate()
@@ -107,7 +108,7 @@ public class PlayerController : MonoBehaviour
         if (health.IsAlive())
         {
             score += scoreToAdd;
-            scoreText.text = "Score : " + score.ToString();
+            scoreText.text = score.ToString();
         }
     }
 
@@ -131,5 +132,20 @@ public class PlayerController : MonoBehaviour
 
 
     // ------------------------------------------------------------------ ABILITATI ------------------------------------------------------------------------ //
+
+    private void ApplyAbilities()
+    {
+        SuperSpeed();
+    }
+
+    private void SuperSpeed()
+    {
+        if(Input.GetKey(KeyCode.Alpha1))
+        {
+            Time.timeScale = 0.1f;
+            playerSpeed += 3f;
+           
+        }
+    }
     
 }

@@ -453,6 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae21788ad41a47438df69c1484ab6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: {fileID: 0}
 --- !u!1 &6755516044377679846
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +529,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.6039216, g: 0.8313726, b: 0.8431373, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
