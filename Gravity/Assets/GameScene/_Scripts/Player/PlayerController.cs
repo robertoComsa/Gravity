@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
         ManageMovement();
         ManageBestScore();
         ManagePauseMenu();
-        ApplyAbilities();
     }
 
     private void FixedUpdate()
@@ -129,23 +128,4 @@ public class PlayerController : MonoBehaviour
         else if (collision.tag == "Satellite" && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
             AddScore(scoreForSatellite);
     }
-
-
-    // ------------------------------------------------------------------ ABILITATI ------------------------------------------------------------------------ //
-
-    private void ApplyAbilities()
-    {
-        SuperSpeed();
-    }
-
-    private void SuperSpeed()
-    {
-        if(Input.GetKey(KeyCode.Alpha1))
-        {
-            Time.timeScale = 0.1f;
-            playerSpeed += 3f;
-           
-        }
-    }
-    
 }
