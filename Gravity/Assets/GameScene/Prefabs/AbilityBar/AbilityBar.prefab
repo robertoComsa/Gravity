@@ -502,7 +502,7 @@ PrefabInstance:
     - target: {fileID: 2385977561418776998, guid: 099a4f70998b4f74d80a4633d818915e,
         type: 3}
       propertyPath: m_Name
-      value: Warp
+      value: Shield
       objectReference: {fileID: 0}
     - target: {fileID: 2385977561418776999, guid: 099a4f70998b4f74d80a4633d818915e,
         type: 3}

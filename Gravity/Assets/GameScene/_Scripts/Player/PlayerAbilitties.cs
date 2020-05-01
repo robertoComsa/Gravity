@@ -14,25 +14,32 @@ public class PlayerAbilitties : MonoBehaviour
     // HeartMagnet - W 
     bool isHeartMagnetOnCd = false;
     Image heartMagnetImage = null;
+    bool isMagnetOn = false;
+    public bool GetIsMagnetOn() { return isMagnetOn; }
 
-    // Warp - E
-    bool isWarpOnCd = false;
-    Image warpImage = null;
+    // Shield - E
+    bool isShieldOnCd = false;
+    Image shieldImage = null;
+    bool isShieldOn = false;
+    public bool GetIsShieldOn() { return isShieldOn; }
 
     // Ultimate - R
     bool isUltimateOnCd = false;
     Image ultimateImage = null;
+    [SerializeField] Image ultimateEffectImage = null;
+
+    PlayerController player = null;
 
     // ------------------------------------------------------ Variabile vizibile in editor ------------------------------------------------ //
 
     [SerializeField] GameObject superSpeedAbltBtn =null;
     [SerializeField] GameObject heartMagnetAbltBtn = null;
-    [SerializeField] GameObject warpAbltBtn = null;
+    [SerializeField] GameObject shieldAbltBtn = null;
     [SerializeField] GameObject ultimateAbltBtn = null;
 
     [SerializeField] float superSpeedAbltCD = 0f;
     [SerializeField] float heartMagnetAbltCD = 0f;
-    [SerializeField] float warpAbltCD = 0f;
+    [SerializeField] float shieldAbltCD = 0f;
     [SerializeField] float ultimateAbltCD = 0f;
 
     // ----------------------------------------------------------------- Metode sistem --------------------------------------------------------- //
@@ -44,78 +51,179 @@ public class PlayerAbilitties : MonoBehaviour
 
     private void Awake()
     { 
+        // Abilities
         superSpeedImage = superSpeedAbltBtn.GetComponentInChildren<Image>();
         heartMagnetImage = heartMagnetAbltBtn.GetComponentInChildren<Image>();
-        warpImage = warpAbltBtn.GetComponentInChildren<Image>();
+        shieldImage = shieldAbltBtn.GetComponentInChildren<Image>();
         ultimateImage = ultimateAbltBtn.GetComponentInChildren<Image>();
+
+        // Others
+        player = GetComponent<PlayerController>();
     }
 
     // --------------------------------------------------------------------- Metode ------------------------------------------------------------ //
 
     private void ManageAbilities()
     {
-        SuperSpeedAbbility(); // Q
-        HeartMagnetAbillity(); // W 
-        WarpAbillity(); // E 
-        UltimateAbillity(); // R
+        SuperSpeedAbility(); // Q
+        HeartMagnetAbility(); // W 
+        ShieldAbility(); // E 
+        UltimateAbility(); // R
     }
 
-    private void ApplyCooldownOnAblt(float cooldown, Image image, bool isAbltOnCD)
-    {
-        image.fillAmount += 1 / cooldown * Time.deltaTime;
-        if (image.fillAmount >= 1)
-        {
-            image.fillAmount = 0;
-            isAbltOnCD = false;
-            image.color = new Color32(255, 255, 255, 255);
-        }
-    }
 
     // ------------ Prima abilitate - Super viteza - Q -------------- //  
-    private void SuperSpeedAbbility()
+
+    bool ablt1check = false;
+
+    IEnumerator ApplyCooldownOnAblt_1(float cooldown)
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        ablt1check = true;
+        yield return new WaitForSeconds(cooldown);
+        superSpeedImage.color = new Color32(255, 255, 255, 255);
+        isSuperSpeedOnCd = false;
+        ablt1check = false;
+    }
+
+    private void SuperSpeedAbility()
+    {
+        if (Input.GetKeyDown(KeyCode.Q) && isSuperSpeedOnCd==false)
         {
             isSuperSpeedOnCd = true;
             superSpeedImage.color = new Color32(108, 108, 108, 255);
+            StartCoroutine(IncreaseSpeed());
         }
 
-        if (isSuperSpeedOnCd) ApplyCooldownOnAblt(superSpeedAbltCD, superSpeedImage, isSuperSpeedOnCd);
+        if (isSuperSpeedOnCd && !ablt1check)
+        {
+            StartCoroutine(ApplyCooldownOnAblt_1(superSpeedAbltCD));
+        }
+    }
+
+    IEnumerator IncreaseSpeed()
+    {
+        player.SetPlayerSpeed(player.GetPlayerSpeed * 2f);
+        // Aici adaugi efeect , pana trec cele 1,3 secunde de speedboost ( ex : caracterul lasa dunga particule )
+        yield return new WaitForSeconds(1.3f);
+        player.SetPlayerSpeed(player.GetPlayerSpeed / 2f);
     }
 
     // ------------ A 2-a abilitate - Magnet inimi - W -------------- //
-    private void HeartMagnetAbillity()
+
+    bool ablt2check = false;
+
+    IEnumerator ApplyCooldownOnAblt_2(float cooldown)
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        ablt2check = true;
+        yield return new WaitForSeconds(cooldown);
+        heartMagnetImage.color = new Color32(255, 255, 255, 255);
+        isHeartMagnetOnCd = false;
+        ablt2check = false;
+    }
+
+    private void HeartMagnetAbility()
+    {
+        if (Input.GetKeyDown(KeyCode.W) && isHeartMagnetOnCd==false)
         {
             isHeartMagnetOnCd = true;
             heartMagnetImage.color = new Color32(108, 108, 108, 255);
+            StartCoroutine(ActivateHeartMagnet());
         }
 
-        if (isHeartMagnetOnCd) ApplyCooldownOnAblt(heartMagnetAbltCD, heartMagnetImage, isHeartMagnetOnCd);
+        if(isHeartMagnetOnCd && !ablt2check)
+        {
+            StartCoroutine(ApplyCooldownOnAblt_2(heartMagnetAbltCD));
+        }
     }
 
-    // ---------------- A 3-a abilitate - Teleportare - E ------------- // 
-    private void WarpAbillity()
+    IEnumerator ActivateHeartMagnet()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        isMagnetOn = true;
+        // Aici poti adauga la fel , o aura verde ( daca ai pus meteoriti verzi )
+        yield return new WaitForSeconds(5f);
+        isMagnetOn = false;
+    }
+
+    // ---------------- A 3-a abilitate - Shield - E ------------- // 
+
+    bool ablt3check = false;
+
+    IEnumerator ApplyCooldownOnAblt_3(float cooldown)
+    {
+        ablt3check = true;
+        yield return new WaitForSeconds(cooldown);
+        shieldImage.color = new Color32(255, 255, 255, 255);
+        isShieldOnCd = false;
+        ablt3check = false;
+    }
+
+    private void ShieldAbility()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && isShieldOnCd==false)
         {
-            isWarpOnCd = true;
-            warpImage.color = new Color32(108, 108, 108, 255);
+            isShieldOnCd = true;
+            shieldImage.color = new Color32(108, 108, 108, 255);
+            StartCoroutine(ActivateShield());
         }
 
-        if (isWarpOnCd) ApplyCooldownOnAblt(warpAbltCD, warpImage, isWarpOnCd);
+        if (isShieldOnCd && !ablt3check)
+        {
+            StartCoroutine(ApplyCooldownOnAblt_3(shieldAbltCD));
+        }
+    }
+
+    IEnumerator ActivateShield()
+    {
+        isShieldOn = true;
+        // Si aici ceva sa reprezinte scut :))
+        yield return new WaitForSeconds(3f);
+        isShieldOn = false;
     }
 
     // ---------------- A 4-a abilitate - Ultimata - R ------------- // 
-    private void UltimateAbillity()
+
+    bool ablt4check = false;
+
+    IEnumerator ApplyCooldownOnAblt_4(float cooldown)
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        ablt4check = true;
+        yield return new WaitForSeconds(cooldown);
+        ultimateImage.color = new Color32(255, 255, 255, 255);
+        isUltimateOnCd = false;
+        ablt4check = false;
+    }
+
+    private void UltimateAbility()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && !isUltimateOnCd)
         {
             isUltimateOnCd = true;
             ultimateImage.color = new Color32(108, 108, 108, 255);
+            ApplyUltimateAbility();
         }
 
-        if (isUltimateOnCd) ApplyCooldownOnAblt(ultimateAbltCD, ultimateImage, isUltimateOnCd);
+        if (isUltimateOnCd && !ablt4check)
+        {
+            StartCoroutine(ApplyCooldownOnAblt_4(ultimateAbltCD));
+        }
+    }
+
+    private void ApplyUltimateAbility()
+    {
+        StartCoroutine(FlashOnScreenForUltimate());
+        SpaceObject[] spaceObjects = FindObjectsOfType<SpaceObject>();
+        foreach (SpaceObject spaceObject in spaceObjects)
+        {
+            if (spaceObject.CompareTag("Asteroid")) Destroy(spaceObject.gameObject);
+            else if(spaceObject.CompareTag("Satellite"))
+                spaceObject.SetDestination(spaceObject.GetSatelliteReturnDestination());
+        }
+    }
+
+    IEnumerator FlashOnScreenForUltimate()
+    {
+        ultimateEffectImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        ultimateEffectImage.gameObject.SetActive(false);
     }
 }

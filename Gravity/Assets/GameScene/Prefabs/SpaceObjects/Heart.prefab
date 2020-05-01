@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b835b37b8d8b16488d9b845d163caf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 6684037487844305217, guid: c81e31bed3ab32e42b227d231544d183, type: 3}
   blackHole: {fileID: 8716152094426822075, guid: aa5f3f7f0b1a90e479af801e85486a83,
     type: 3}
   minSpeed: 2

@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
     // -------------------------------------------------------- Variabile - vizibile in editor ------------------------------------------------------------ //
 
     [SerializeField] private float playerSpeed = 0f;
+    public void SetPlayerSpeed(float value){ playerSpeed = value; }
+    public float GetPlayerSpeed{ get { return playerSpeed; } }
+
     [SerializeField] private PlayerHealth health = null;
     [SerializeField] private GameObject pauseMenu = null;
 
@@ -18,12 +21,14 @@ public class PlayerController : MonoBehaviour
     int vertical = 0;
     int horizontal = 0;
     bool isPaused = false;
+    PlayerAbilitties abilities = null;
 
     // --------------------------------------------------------------- Metode sistem ------------------------------------------------------------------- //
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        abilities = GetComponent<PlayerAbilitties>();
     }
 
     private void Start()
@@ -113,19 +118,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "BH") health.Die();
-        else if (collision.tag == "Heart")
+        if (collision.CompareTag("BH")) health.Die();
+        else if (collision.CompareTag("Heart"))
         {
             health.GetHealed();
             Destroy(collision.gameObject);
         }
-        else if (collision.tag == "Asteroid")
+        else if (collision.CompareTag("Asteroid"))
         {
-            health.TakeDamage();
-            AddScore(-scoreForAsteroid);
-            Destroy(collision.gameObject);
+            if (abilities.GetIsShieldOn())
+                Destroy(collision.gameObject);
+            else
+            {
+                health.TakeDamage();
+                AddScore(-scoreForAsteroid);
+                Destroy(collision.gameObject);
+            }
         }
-        else if (collision.tag == "Satellite" && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
+        else if (collision.CompareTag("Satellite") && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
             AddScore(scoreForSatellite);
     }
 }

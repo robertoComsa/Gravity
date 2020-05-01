@@ -154,7 +154,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 0}
   scoreText: {fileID: 0}
   scoreForSatellite: 5
-  scoreForAsteroid: 15
+  scoreForAsteroid: 5
   score: 0
 --- !u!114 &6684037487844305220
 MonoBehaviour:
@@ -218,9 +218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   superSpeedAbltBtn: {fileID: 0}
   heartMagnetAbltBtn: {fileID: 0}
-  warpAbltBtn: {fileID: 0}
+  shieldAbltBtn: {fileID: 0}
   ultimateAbltBtn: {fileID: 0}
-  superSpeedAbltCD: 5
-  heartMagnetAbltCD: 10
-  warpAbltCD: 7
-  ultimateAbltCD: 20
+  superSpeedAbltCD: 10
+  heartMagnetAbltCD: 15
+  shieldAbltCD: 8
+  ultimateAbltCD: 25

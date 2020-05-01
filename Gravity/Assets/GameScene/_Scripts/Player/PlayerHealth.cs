@@ -52,7 +52,7 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         isAlive = false;
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
         afterDeathMenu.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
