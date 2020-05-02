@@ -10604,7 +10604,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: ff01eb54d902d8d428d0585489dd95e1, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
@@ -15410,6 +15410,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1693388639}
     m_Modifications:
+    - target: {fileID: 235248345335458359, guid: 77ba046641833bf499576f6811a9b3aa,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff01eb54d902d8d428d0585489dd95e1,
+        type: 3}
     - target: {fileID: 1533836886000693278, guid: 77ba046641833bf499576f6811a9b3aa,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -15479,6 +15485,28 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421690557184790211, guid: 77ba046641833bf499576f6811a9b3aa,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff01eb54d902d8d428d0585489dd95e1,
+        type: 3}
+    - target: {fileID: 4977102122542773070, guid: 77ba046641833bf499576f6811a9b3aa,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff01eb54d902d8d428d0585489dd95e1,
+        type: 3}
+    - target: {fileID: 4977102122542773070, guid: 77ba046641833bf499576f6811a9b3aa,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4977102122542773070, guid: 77ba046641833bf499576f6811a9b3aa,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5542800103415566497, guid: 77ba046641833bf499576f6811a9b3aa,
         type: 3}
@@ -15625,6 +15653,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityBar
       objectReference: {fileID: 0}
+    - target: {fileID: 7277733386155847292, guid: 77ba046641833bf499576f6811a9b3aa,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: ff01eb54d902d8d428d0585489dd95e1,
+        type: 3}
     - target: {fileID: 8283595733514351701, guid: 77ba046641833bf499576f6811a9b3aa,
         type: 3}
       propertyPath: m_AnchorMin.y
