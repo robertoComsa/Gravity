@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    List<ParticleSystem> list = new List<ParticleSystem>();
     // ------------------------------------------------ Variabile - vizibile in editor ---------------------------------------------- //
-
+    [SerializeField] ParticleSystem system = null; 
     [SerializeField] GameObject asteroid = null;
     [SerializeField] GameObject satellite = null;
     [SerializeField] GameObject heart = null;
     [SerializeField] PlayerController player = null;
     [SerializeField] float spawnWait = 0f;
+    
 
     // ------------------------------------------------------------- Metode --------------------------------------------------------- //
-
+    
     private void Start()
     {
         StartCoroutine(SpawnSpaceObjects());
@@ -80,6 +82,13 @@ public class SpawnManager : MonoBehaviour
         else if (collision.tag == "Asteroid" || collision.tag =="Heart")
         {
             Destroy(collision.gameObject);
+        }
+        list.Add(Instantiate(system, collision.transform.position, Quaternion.identity));        
+        list[list.Count - 1].Play();
+        if(!list[0].isPlaying)
+        {
+            Destroy(list[0].gameObject);
+            list.RemoveAt(0);
         }
     }
 }
