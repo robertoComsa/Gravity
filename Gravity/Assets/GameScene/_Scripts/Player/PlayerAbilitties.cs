@@ -11,6 +11,7 @@ public class PlayerAbilitties : MonoBehaviour
     bool isSuperSpeedOnCd = false;
     Image superSpeedImage = null;
 
+
     // HeartMagnet - W 
     bool isHeartMagnetOnCd = false;
     Image heartMagnetImage = null;
@@ -21,6 +22,7 @@ public class PlayerAbilitties : MonoBehaviour
     bool isShieldOnCd = false;
     Image shieldImage = null;
     bool isShieldOn = false;
+    [SerializeField] GameObject shield=null;
     public bool GetIsShieldOn() { return isShieldOn; }
 
     // Ultimate - R
@@ -56,7 +58,7 @@ public class PlayerAbilitties : MonoBehaviour
         heartMagnetImage = heartMagnetAbltBtn.GetComponentInChildren<Image>();
         shieldImage = shieldAbltBtn.GetComponentInChildren<Image>();
         ultimateImage = ultimateAbltBtn.GetComponentInChildren<Image>();
-
+        shield.SetActive(false);
         // Others
         player = GetComponent<PlayerController>();
     }
@@ -139,7 +141,6 @@ public class PlayerAbilitties : MonoBehaviour
     IEnumerator ActivateHeartMagnet()
     {
         isMagnetOn = true;
-        // Aici poti adauga la fel , o aura verde ( daca ai pus meteoriti verzi )
         yield return new WaitForSeconds(5f);
         isMagnetOn = false;
     }
@@ -175,8 +176,9 @@ public class PlayerAbilitties : MonoBehaviour
     IEnumerator ActivateShield()
     {
         isShieldOn = true;
-        // Si aici ceva sa reprezinte scut :))
+        shield.SetActive(true);
         yield return new WaitForSeconds(3f);
+        shield.SetActive(false);
         isShieldOn = false;
     }
 

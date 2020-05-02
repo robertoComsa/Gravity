@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerHealth health = null;
     [SerializeField] private GameObject pauseMenu = null;
+    List<ParticleSystem> list = new List<ParticleSystem>();
+    [SerializeField] ParticleSystem system1 = null; 
+    [SerializeField] ParticleSystem system2 = null;
 
     // ----------------------------------------------------------------- Variabile ---------------------------------------------------------------------- //
 
@@ -118,14 +121,24 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("BH")) health.Die();
+        if (collision.CompareTag("BH")) 
+        {
+            health.Die();
+            list.Add(Instantiate(system2, collision.transform.position, Quaternion.identity));        
+            list[list.Count - 1].Play();
+        }
         else if (collision.CompareTag("Heart"))
         {
             health.GetHealed();
+            list.Add(Instantiate(system1, collision.transform.position, Quaternion.identity));        
+            list[list.Count - 1].Play();
             Destroy(collision.gameObject);
+           
         }
         else if (collision.CompareTag("Asteroid"))
         {
+            list.Add(Instantiate(system2, collision.transform.position, Quaternion.identity));        
+            list[list.Count - 1].Play();
             if (abilities.GetIsShieldOn())
                 Destroy(collision.gameObject);
             else
@@ -134,8 +147,15 @@ public class PlayerController : MonoBehaviour
                 AddScore(-scoreForAsteroid);
                 Destroy(collision.gameObject);
             }
+            
         }
         else if (collision.CompareTag("Satellite") && collision.GetComponent<SpaceObject>().GetSaved == false) // a 2-a conditie necesara pentru a evita exploit de obtinere scor.
             AddScore(scoreForSatellite);
+        
+        if(list.Count != 0 && (!list[0].isPlaying))
+        {
+            Destroy(list[0].gameObject);
+            list.RemoveAt(0);
+        }
     }
 }
