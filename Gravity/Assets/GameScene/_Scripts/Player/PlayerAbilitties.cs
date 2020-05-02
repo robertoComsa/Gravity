@@ -215,8 +215,11 @@ public class PlayerAbilitties : MonoBehaviour
         foreach (SpaceObject spaceObject in spaceObjects)
         {
             if (spaceObject.CompareTag("Asteroid")) Destroy(spaceObject.gameObject);
-            else if(spaceObject.CompareTag("Satellite"))
+            else if (spaceObject.CompareTag("Satellite"))
+            {
                 spaceObject.SetDestination(spaceObject.GetSatelliteReturnDestination());
+                player.AddScore(player.GetScoreForSatellite);
+            }
         }
     }
 
