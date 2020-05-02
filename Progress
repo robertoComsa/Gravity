@@ -33,3 +33,10 @@ Phase 1.4:
 -> Added ability bar system & rescaled space objects.
 -> Added ability cooldown system + UI  
 -> Implemented abilities 
+-> Improved Colliders
+-> Added particle effects on collisions and improved sprites 
+-> Added vortex effect on BlackHole and Space objects
+
+Phase 1.5:
+
+-> Added Audio
