@@ -9,6 +9,7 @@ Proiect Jocuri - Echipa 9
       
 ## Jucator
    Jucatorul se misca prin input orizontal si vertical (*arrow keys*) permitand astfel avansarea in 8 directii posibile. De asemenea datorita tehnologiei avansate are acces la un set de abilitati utile:
+   
       * Super viteza - Un burst de scurta durata in viteza de miscare a jucatorului - Cooldown : 10
       * Health Magnet - Sistem ce atrage asteroizii cu minereuri ce ajuta la vindecarea jucatorului - Cooldown : 10
       * Shield - Imunitate pe o anumita perioada de timp la coliziunea cu asteroizii - Cooldown : 8
