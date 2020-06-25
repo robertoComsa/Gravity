@@ -6,6 +6,8 @@ Proiect Jocuri - Echipa 9
    Jocul are ca inspiratie cel mai puternic eveniment spatial inregistrat vreodata , gaura neagra . Jucatorul reprezinta o entitate binevoitoare cu tehnologii avansate care are ca misiune salvarea navetelor spatiale de la o moarte iminenta . Misiunea insa nu este una usoara caci gravitatia gaurii negre atrage nenumarate obiecte spatiale care pot fi periculoase.
       
    Reflexele si atentia distributiva reprezinta componente cheie pentru a deveni maestru la acest joc .
+   
+   <img src="Images/Main_menu.PNG">
       
 ## Jucator
    Jucatorul se misca prin input orizontal si vertical (*arrow keys*) permitand astfel avansarea in 8 directii posibile. De asemenea datorita tehnologiei avansate are acces la un set de abilitati utile:
