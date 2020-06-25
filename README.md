@@ -8,6 +8,8 @@ Proiect Jocuri - Echipa 9
    Reflexele si atentia distributiva reprezinta componente cheie pentru a deveni maestru la acest joc .
    
    <img src="Images/Main_menu.PNG">
+   
+   <img src="Images/In_game.PNG">
       
 ## Jucator
    Jucatorul se misca prin input orizontal si vertical (*arrow keys*) permitand astfel avansarea in 8 directii posibile. De asemenea datorita tehnologiei avansate are acces la un set de abilitati utile:
